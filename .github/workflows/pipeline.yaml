@@ -1,18 +1,5 @@
 name: CI Pipeline
-
-on:
-  push:
-    paths:
-      - 'app/**'
-      - 'tests/**'
-      - 'run.py'
-  pull_request:
-    paths:
-      - 'app/**'
-      - 'tests/**'
-      - 'run.py'
-  workflow_dispatch:   # Manual trigger
-
+on: push    # Manual trigger
 jobs:
   ci:
     runs-on: ubuntu-latest   # Use your local self-hosted runner
