@@ -1,4 +1,4 @@
-.PHONY: db build run run-api stop clean logs
+.PHONY: db build run run-api stop clean logs lint test docker-build docker-push
 
 db:
 	echo "Starting DB container..."
@@ -22,3 +22,16 @@ clean:
 
 logs:
 	docker compose logs -f
+
+# ---- New targets for CI ----
+lint:
+	flake8 .
+
+test:
+	pytest
+
+docker-build:
+	docker build -t $(DOCKER_IMAGE) .
+
+docker-push:
+	docker push $(DOCKER_IMAGE)
